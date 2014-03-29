@@ -1,0 +1,66 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	height:100%;
+	width:100%;
+	padding:0px;
+	margin:0px;
+	background-image: url(../images/bg.png);
+	background-repeat:no-repeat;
+	background-color: rgb(222,225,193);
+}
+
+div.container {
+	position:relative;
+	width:100%;
+	height:100%;
+}
+label {
+	display:inline-block;
+	width:150px;
+	font-weight:bold;
+	font-size:120%;
+}
+
+div.loginBox {
+	position:absolute;
+	top: 50%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+	border: #000000 solid 4px;
+	
+	
+}
+
+div.spacer {
+	position:absolute;
+	top: 70%;
+    left: 50%;
+    height: 30%;
+    /*width: 50%;*/
+    margin: -15% 0% 0 -25%;
+	
+}
+
+input.loginbutton {
+	position:absolute;
+	width:110px;
+	height:25px;
+	background-color: #0099FF;
+	background-image: -moz-linear-gradient(rgb(70,157,212), rgb(55,123,166));
+	background-image: -webkit-linear-gradient(rgb(70,157,212), rgb(55,123,166));
+	/*background-image: -moz-linear-gradient(#1100CC, #000099);*/
+	border:none;
+	color: #fff;
+	cursor: pointer;
+	right: 0%;
+	top: 100%;
+}
+
+input {
+	border: #000000 solid 2px;
+	background-color: rgb(222,225,193);
+	
+}

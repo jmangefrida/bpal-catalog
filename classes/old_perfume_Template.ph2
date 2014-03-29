@@ -1,0 +1,182 @@
+<?php
+class perfume_Template {
+	// TODO - Insert your code here
+
+	protected $perfumeId;
+	protected $name;
+	protected $category;
+	protected $picture;
+	protected $description;
+	protected $discontinued;
+
+
+	/**
+	 * @return the $discontinued
+	 */
+	public function getDiscontinued() {
+		return $this->discontinued;
+	}
+
+	/**
+	 * @param field_type $discontinued
+	 */
+	public function setDiscontinued($discontinued) {
+		$this->discontinued = $discontinued;
+	}
+
+	/**
+	 * @return the $perfumeId
+	 */
+	public function getPerfumeId() {
+		return $this->perfumeId;
+	}
+
+	/**
+	 * @return the $name
+	 */
+	public function getName() {
+		return $this->name;
+	}
+
+	/**
+	 * @return the $category
+	 */
+	public function getCategory() {
+		return $this->category;
+	}
+
+	public function getCategoryName() {
+		return $this->category->name;
+	}
+	
+	/**
+	 * @return the $picture
+	 */
+	public function getPicture() {
+		return $this->picture;
+	}
+
+	/**
+	 * @return the $description
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
+
+	/**
+	 * @param field_type $perfumeId
+	 */
+	public function setPerfumeId($perfumeId) {
+		$this->perfumeId = $perfumeId;
+	}
+
+	/**
+	 * @param field_type $name
+	 */
+	public function setName($name) {
+		$this->name = $name;
+	}
+
+	/**
+	 * @param field_type $category
+	 */
+	public function setCategory($category) {
+		$this->category = $category;
+	}
+
+	/**
+	 * @param field_type $picture
+	 */
+	public function setPicture($picture) {
+		$this->picture = $picture;
+	}
+
+	/**
+	 * @param field_type $description
+	 */
+	public function setDescription($description) {
+		$this->description = $description;
+	}
+
+
+
+	/**
+	 */
+	function __construct($id) {
+
+		if ($id == '') {
+			exit();
+		}
+		$pdo = database::getInstance();
+		$query = "select * from perfume_Template where id = ?";
+		$stmt = $pdo->prepare($query);
+		$stmt->execute(array($id));
+		$row = $stmt->fetch();
+		if (!$row) {
+			//throw new Exception();
+			return false;
+		}
+		$this->perfumeId = $row['id'];
+		//$this->category = $row['category_id'];
+		$this->category = new category($row['category_id']);
+		$this->name = $row['name'];
+		$this->picture = $row['picture'];
+		$this->description = $row['description'];
+		$this->discontinued = $row['discontinued'];
+
+	}
+
+	public static function doesTemplateExist($name) {
+		$pdo = database::getInstance();
+		$query = "select id from perfume_Template where name = ?";
+		$stmt = $pdo->prepare($query);
+		$stmt->execute(array($name));
+		$row = $stmt->fetch();
+		if (empty($row)) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
+	public static function createTemplate($name, $category, $picture, $description, $discontinued) {
+		if (self::doesTemplateExist($name)) {
+			return false;
+		}
+		$pdo = database::getInstance();
+		$query = "insert into perfume_Template (category_id, name, picture, description, discontinued) values(?,?,?,?,?)";
+		$stmt = $pdo->prepare($query);
+		if (! $stmt->execute(array($category, $name, $picture, $description, $discontinued))) {
+			$error=$stmt->errorInfo();
+			die( "failed: " . $error[2]);
+		}
+
+		$perfumeTemplate = new perfume_Template($name);
+		return $perfumeTemplate;
+	}
+	
+	public static function updateTemplate($name, $category, $picture, $description, $discontinued, $id) {
+// 		if (self::doesTemplateExist($name)) {
+// 			return false;
+// 		}
+		$pdo = database::getInstance();
+		$query = "update perfume_Template set  category_id = ?, name = ?, picture =?, description = ?, discontinued = ?) where id = ?";
+		$stmt = $pdo->prepare($query);
+		if (! $stmt->execute(array($category, $name, $picture, $description, $discontinued, $id))) {
+			$error=$stmt->errorInfo();
+			die( "failed: " . $error[2]);
+		}
+	
+		$perfumeTemplate = new perfume_Template($name);
+		return $perfumeTemplate;
+	}
+	
+	public function toJSON() {
+	
+		//$output = array('id' => $this->getId(), 'name' => $this->getName(), );
+		$output = get_object_vars($this);
+		return json_encode($output);
+	}
+}
+
+?>

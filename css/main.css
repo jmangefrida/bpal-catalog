@@ -1,0 +1,184 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	height:100%;
+	width:100%;
+	padding:0px;
+	margin:0px;
+	background-image: url(../images/bg.png);
+	background-repeat:no-repeat;
+	background-color: rgb(222,225,193);
+}
+
+div.header {
+	width:100%;
+	height:120px;
+	margin:auto;
+	border-bottom: 2px solid #000000;
+	
+}
+
+div.listItem {
+	position:relative;
+	width: 80%;
+	min-height:80px;
+	border: 2px solid #000000;
+	margin:auto;
+	margin-top:18px;
+	background-color: rgba(255,255,255,.5);
+	
+	
+	
+}
+
+
+span.shadowbox {
+	display:inline-block;
+	width:150px;
+}
+
+span.shadowtitle {
+	font-weight:bold;
+}
+
+.listitem:hover {
+/* 	border-color: #FF0000; */
+	background-color: rgba(255,255,255,1);
+}
+
+.listitem span {
+	display:inline-block;
+	width:15%;
+}
+
+.listitem span.title {
+	display:inline-block;
+	font-weight:bold;
+	font-size:120%;
+}
+
+div.listTemplate {
+	display:none;
+}
+
+button.green {
+/* 	float:right; */
+/* 	margin:20px; */
+	width:110px;
+	height:25px;
+	background-color: #0099FF;
+	background-image: -webkit-linear-gradient(#00CC11, #009900);
+	background-image: -moz-linear-gradient(#00CC11, #009900);
+	/*background-image: -moz-linear-gradient(#1100CC, #000099); */
+	border:solid 1px #000000;
+	color: #fff;
+	cursor: pointer;
+	
+}
+
+div.menuButton {
+/*  	float:right; */
+	position:absolute;
+	right:20px;
+	margin:20px;
+	font-size:60%;
+
+}
+
+div.menuButton#menuTop {
+	top:-10px;
+}
+
+div.menuButton#menuMid {
+	top:20px;
+}
+
+div.menuButton#menuBottom {
+	top:50px;
+}
+
+button#select {
+/* 	float:right; */
+	height:25px;
+	width:25px;
+	left:-2px;
+	background-color: #0099FF;
+	background-image: -webkit-linear-gradient(#00CC11, #009900);
+	background-image: -moz-linear-gradient(#00CC11, #009900);
+}
+
+button.menuSelectTop#select {
+	top:20px;
+	background-color: #0099FF;
+	background-image: -webkit-linear-gradient(#00CC11, #009900);
+	background-image: -moz-linear-gradient(#00CC11, #009900);
+}
+
+button.blue {
+	margin:20px;
+	width:100px;
+	height:25px;
+	background-color: #0099FF;
+	background-image: -moz-linear-gradient(rgb(70,157,212), rgb(55,123,166));
+	background-image: -webkit-linear-gradient(rgb(70,157,212), rgb(55,123,166));
+	border:none;
+	color: #fff;
+	cursor: pointer;
+	
+}
+
+/* button#addTemplate { */
+/* 	position:absolute; */
+/* 	right:10px; */
+/* 	top:45px; */
+/* } */
+
+.ui-menu { position: absolute; width: 100px; }
+
+li {
+	width:100px;
+}
+button.yellow {
+	margin:20px;
+	width:110px;
+	height:25px;
+	background-color: #FFFF33;
+	background-image: -moz-linear-gradient(rgb(220,220,51), rgb(255,255,00));
+	background-image: -webkit-linear-gradient(rgb(70,157,212), rgb(55,123,166));
+	border:none;
+	color: #fff;
+	cursor: pointer;
+	
+}
+
+/* button#addPerfume { */
+/* 	position:absolute; */
+/* 	right:10px; */
+/* 	top:75px; */
+/* } */
+
+/* button#addCategory { */
+/* 	position:absolute; */
+/* 	right:10px; */
+/* } */
+
+h1 {
+	position:absolute;
+	top:20px;
+	text-align: center;
+	font-family: 'Kranky', cursive;
+	font-size: 400%;
+	margin:auto;
+	width:100%;
+}
+span#perfumeName {
+	font-size:150%;
+}
+img#label {
+	width:150px;
+}
+
+label {
+	display:inline-block;
+	width:150px;
+}
